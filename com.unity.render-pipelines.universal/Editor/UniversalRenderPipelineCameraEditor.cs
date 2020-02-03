@@ -628,7 +628,7 @@ namespace UnityEditor.Rendering.Universal
             {
                 DrawTargetTexture();
 
-                if(camera.targetTexture == null)
+                if (camera.targetTexture == null)
                 {
                     DrawHDR();
                     DrawMSAA();
@@ -636,7 +636,10 @@ namespace UnityEditor.Rendering.Universal
                     settings.DrawDynamicResolution();
                     settings.DrawMultiDisplay();
                 }
-                // Third option comes later.
+                else
+                {
+                    settings.DrawNormalizedViewPort();
+                }
 
                 EditorGUILayout.Space();
                 EditorGUILayout.Space();
