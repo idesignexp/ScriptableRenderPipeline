@@ -568,18 +568,18 @@ namespace UnityEditor.Rendering.Universal
                 }
                 else if (camType == CameraRenderType.Overlay)
                 {
+                    DrawPostProcessingOverlay();
                     EditorGUILayout.PropertyField(m_AdditionalCameraClearDepth, Styles.clearDepth);
                     m_AdditionalCameraDataSO.ApplyModifiedProperties();
-                    DrawPostProcessingOverlay();
                 }
 
-                DrawOpaqueTexture();
-                DrawDepthTexture();
                 DrawRenderShadows();
 
                 if (camType == CameraRenderType.Base)
                 {
                     DrawPriority();
+                    DrawOpaqueTexture();
+                    DrawDepthTexture();
                 }
 
                 settings.DrawCullingMask();
