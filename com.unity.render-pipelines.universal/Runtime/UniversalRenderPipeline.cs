@@ -602,6 +602,14 @@ namespace UnityEngine.Rendering.Universal
                 cameraData.renderer = asset.scriptableRenderer;
             }
 
+            // Disable depth and color copy. We should add it in the renderer instead to avoid performance pitfalls
+            // of camera stacking breaking render pass execution implicitly.
+            if (cameraData.renderType == CameraRenderType.Overlay)
+            {
+                cameraData.requiresDepthTexture = false;
+                cameraData.requiresOpaqueTexture = false;
+            }
+
             // Disables post if GLes2
             cameraData.postProcessEnabled &= SystemInfo.graphicsDeviceType != GraphicsDeviceType.OpenGLES2;
 
